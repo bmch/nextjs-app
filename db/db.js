@@ -34,7 +34,6 @@ export async function getDataById(val) {
     .where({ name: val })
     .limit(1);
 
-  console.log('consider revisting this obj', getBikeByName);
   const returnValue = {
     ...getBikeByName[0],
     id: val,

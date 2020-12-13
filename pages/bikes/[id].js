@@ -20,7 +20,6 @@ export async function getStaticPaths() {
 }
 
 export default function Post({ bikeData }) {
-  console.log('bike data in post component', bikeData);
   return (
     <Layout>
       {bikeData.name}
