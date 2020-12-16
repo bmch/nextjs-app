@@ -7,10 +7,18 @@ exports.seed = function (knex) {
       return knex('bikes').insert([
         {
           id: 1,
-          name: 'sl7',
-          price: 11999,
+          name: 'Specialized-S-Works-Tarmac-SL7-Dura-Ace-Di2',
+          price: 11500,
           launch_date: new Date().toISOString(),
-          score: 5,
+          score: 4.85,
+          brand: 'Specialized',
+          model_family: 'Tarmac SL7',
+          model_variant: 'S-Works Tarmac SL7 DURA ACE DI2',
+          model_year: 2020,
+          brake_type: 'hydraulic disc',
+          image_url:
+            '/images/bicycles/2021-s-works-tarmac-sl7-dura-ace-di2.jpg',
+          drive_train_type: 'Shimano Dura-Ace Di2 Disc R9170',
         },
         {
           id: 2,
@@ -18,6 +26,14 @@ exports.seed = function (knex) {
           price: 7699,
           launch_date: new Date().toISOString(),
           score: 4.2,
+          brand: 'Canyon',
+          model_family: 'Tarmac SL7',
+          model_variant: 'S-Works Tarmac SL7 DURA ACE DI2',
+          model_year: 2020,
+          brake_type: 'hydraulic disc',
+          image_url:
+            '/images/bicycles/2021-s-works-tarmac-sl7-dura-ace-di2.jpg',
+          drive_train_type: 'Shimano Dura-Ace Di2 Disc R9170',
         },
         {
           id: 3,

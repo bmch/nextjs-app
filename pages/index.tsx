@@ -2,10 +2,10 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../components/layout';
 import utilStyles from '../styles/utils.module.css';
-
 import { getBikeData } from '../db/db';
+import { GetStaticProps } from 'next'
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async (context) => {
   const bikeData = await getBikeData();
   return {
     props: {
