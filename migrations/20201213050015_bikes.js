@@ -5,17 +5,17 @@ exports.up = function (knex) {
     table.decimal('price').notNullable();
     table.datetime('launch_date', { precision: 6 });
     table.decimal('score').notNullable();
-    table.foreign('brand_id').references('id').inTable('brands');
+    table.foreign('brand_id').references('id').inTable('brands').notNullable();
     table.string('model_family');
     table.string('model_variant');
     table.integer('model_year').unsigned();
     table.string('gender');
-    table.string('fork_material');
+    table.string('frame_material');
     table.string('brake_type');
     table.string('chainset_type', 255);
     table.string('image_url').notNullable();
-    table.foreign('weight_size').references('bike_model').inTable('weights');
-    table.string('drive_train_type').notNullable();
+    table.string('drive_train_type')
+    table.boolean('includes_powermeter').notNullable();
     table.timestamps();
   });
 };
