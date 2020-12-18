@@ -1,0 +1,17 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  grid-gap: 1rem;
+  max-width: 1300px;
+  margin: 2rem auto;
+
+  &__card {
+    border: 2px solid red;
+    padding: 1rem;
+    cursor: pointer;
+
+    &__img {
+      height: 18rem;
+    }
+  }
+}

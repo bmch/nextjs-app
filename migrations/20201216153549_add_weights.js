@@ -1,11 +1,13 @@
 exports.up = function (knex) {
-  return knex.schema.createTableIfNotExists('weights', function (table) {
+  return knex.schema.createTable('weights', function (table) {
     table.increments('id');
-    table.foreign('bike_id').references('id').inTable('bikes');
+    table.integer('bike_id').unsigned().notNullable();
+    table.integer('publication_id').unsigned().notNullable();
     table.decimal('weight_kg').notNullable();
     table.integer('size_cm').notNullable().unsigned();
-    table.foreign('publication_id').references('id').inTable('publications');
     table.timestamps();
+    table.foreign('bike_id').references('id').inTable('bikes');
+    table.foreign('publication_id').references('id').inTable('publications');
   });
 };
 

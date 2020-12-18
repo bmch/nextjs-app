@@ -1,7 +1,7 @@
 exports.up = function (knex) {
-  return knex.schema.createTableIfNotExists('publications', function (table) {
+  return knex.schema.createTable('publications', function (table) {
     table.increments('id');
-    table.string('publication_name').notNullable();
+    table.string('name').notNullable();
     table.timestamps();
   });
 };

@@ -1,7 +1,8 @@
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
+import Image from 'next/image'
 import Layout, { siteTitle } from '../components/layout';
-import utilStyles from '../styles/utils.module.css';
 import { getBikeData } from '../db/db';
 import { GetStaticProps } from 'next'
 
@@ -12,37 +13,60 @@ export const getStaticProps: GetStaticProps = async (context) => {
       bikeData,
     },
   };
+  // sort
+  // weight  
+  // review score 
+  // price
+  // brand
+
+  // aero/ light/ mountain
+  //
 }
 
 export default function Home({ bikeData }) {
+
+  const [bikes, setBikes] = React.useState(bikeData);
+
+  useEffect(() => {
+    setBikes(bikes);
+  }, [bikes])
+
+  const sortByPriceAscending = () => {
+    const sorted = [...bikes].sort((a, b) => {
+      return a.price - b.price;
+    });
+    setBikes(sorted);
+  };
+
   return (
-    <Layout home>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-      <section className={utilStyles.headingMd}>
-        <p>Ipsum Text</p>
+
+    // <Head>
+    //   <title>{siteTitle}</title>
+    // </Head>
+    <div>
+      <section className="filters">
+        <button onClick={sortByPriceAscending}>Price - Low to High</button>
+
       </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {bikeData.map(({ id, launch_date, name, price, score }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/bikes/${name}`}>
-                <a>{name}</a>
-              </Link>
-              <br />
-              {id}
-              <br />
-              Launch Date {launch_date}
-              <br />
-              Price - £{price}
-              <br />
-              Score - {score}
-            </li>
-          ))}
-        </ul>
+      <section className="cards" >
+        {bikes.map(({ id, launch_date, name, price, score, image_url, model_variant }) => (
+
+          <Link href={`/bikes/${name}`} key={id}>
+            <div className="cards__card" >
+              <img
+                src={image_url}
+                alt={name}
+              />
+              <div className="cards__card__details">
+                {model_variant}
+                <br />
+                {price}
+              </div>
+            </div>
+          </Link>
+        ))}
+
       </section>
-    </Layout>
+    </div>
   );
 }
