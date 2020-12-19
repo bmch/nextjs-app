@@ -18,6 +18,7 @@ export const getStaticProps = async (context) => {
 export default function Home({ bikeData }) {
   const dispatch = useDispatch();
   const bikes = useSelector((state) => state.bikeData);
+  const displayPref = useSelector((state) => state.displayPreference);
   const updatedTime = useSelector((state) => state.lastUpdate);
 
   const sortByPriceAscending = () =>
@@ -33,16 +34,8 @@ export default function Home({ bikeData }) {
         <button onClick={sortByPriceAscending}>Price - Low to High</button>
       </section>
       <section className="cards">
-        {bikes.map(
-          ({
-            id,
-            launch_date,
-            name,
-            price,
-            score,
-            image_url,
-            model_variant,
-          }) => (
+        {(displayPref ? displayPref : bikes).map(
+          ({ id, name, price, score, image_url, model_variant }) => (
             <Link href={`/bikes/${name}`} key={id}>
               <div className="cards__card">
                 <img src={image_url} alt={name} />

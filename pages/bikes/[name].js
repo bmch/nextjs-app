@@ -1,14 +1,14 @@
 import Layout from '../../components/layout';
-import { getAllBikeNames, getDataById } from '../../db/db';
+import { getAllBikeNames, getDataByName } from '../../db/db';
 import { useSelector } from 'react-redux';
 
 export async function getStaticProps({ params }) {
-  const bikeData = await getDataById(params.id);
+  const bikeData = await getDataByName(params.name);
   return {
     props: {
       initialReduxState: {
         lastUpdate: Date.now(),
-        bikeData,
+        currentBike: bikeData,
       },
     },
   };
@@ -23,17 +23,17 @@ export async function getStaticPaths() {
 }
 
 export default function Post() {
-  const bikeData = useSelector((state) => state.bikeData);
+  const currentBike = useSelector((state) => state.currentBike);
 
   return (
     <Layout>
-      {bikeData.name}
+      {currentBike.name}
       <br />
-      {bikeData.price}
+      {currentBike.price}
       <br />
-      {bikeData.score}
+      {currentBike.score}
       <br />
-      {bikeData.launch_date}
+      {currentBike.launch_date}
     </Layout>
   );
 }

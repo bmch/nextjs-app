@@ -19,14 +19,14 @@ export async function getAllBikeNames() {
   const valToLog = allBikeNameData.map((val) => {
     return {
       params: {
-        id: val.name,
+        name: val.name,
       },
     };
   });
   return valToLog;
 }
 
-export async function getDataById(val) {
+export async function getDataByName(val) {
   //for static props
   const getBikeByName = await db
     .from('bikes')
@@ -36,7 +36,7 @@ export async function getDataById(val) {
 
   const returnValue = {
     ...getBikeByName[0],
-    id: val,
+    name: val,
   };
 
   return returnValue;

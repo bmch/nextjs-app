@@ -7,6 +7,8 @@ let store;
 const initialState = {
   lastUpdate: 0,
   bikeData: {},
+  currentBike: null,
+  displayPreference: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -15,7 +17,9 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         lastUpdate: action.lastUpdate,
-        bikeData: [...state.bikeData].sort((a, b) => a.price - b.price),
+        displayPreference: [...state.bikeData].sort(
+          (a, b) => a.price - b.price
+        ),
       };
     default:
       return state;
