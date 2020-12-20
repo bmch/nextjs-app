@@ -3,12 +3,11 @@ import { getAllBikeNames, getDataByName } from '../../db/db';
 import { useSelector } from 'react-redux';
 
 export async function getStaticProps({ params }) {
-  const bikeData = await getDataByName(params.name);
+  const singleBike = await getDataByName(params.name);
   return {
     props: {
       initialReduxState: {
-        lastUpdate: Date.now(),
-        currentBike: bikeData,
+        currentBike: singleBike,
       },
     },
   };

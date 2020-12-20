@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
-import { createStore, applyMiddleware } from 'redux';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
 let store;
 
@@ -9,28 +10,95 @@ const initialState = {
   bikeData: {},
   currentBike: null,
   displayPreference: null,
+  visibilityFilter: {
+    sortParams: null,
+    rating: 'all',
+    brand: 'all',
+    weight: 'all',
+    score: 'all',
+    price: 'all',
+    powermeter: false,
+  },
 };
 
-const reducer = (state = initialState, action) => {
+const initialVisibilityState = {
+  visibilityFilter: {
+    sortParams: null,
+    rating: 'all',
+    brand: 'all',
+    weight: 'all',
+    score: 'all',
+    price: 'all',
+    powermeter: false,
+  },
+};
+
+const middleware = [thunk];
+
+const visibilityReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SORT_PRICE_ASCENDING':
+    case 'SET_RATING':
       return {
         ...state,
-        lastUpdate: action.lastUpdate,
-        displayPreference: [...state.bikeData].sort(
-          (a, b) => a.price - b.price
-        ),
+        visibilityFilter: {
+          ...state.visibilityFilter,
+          rating: action.payload.rating,
+        },
+      };
+    case 'SET_BRAND':
+      return {
+        ...state,
+        visibilityFilter: {
+          ...state.visibilityFilter,
+          rating: action.payload.rating,
+        },
+      };
+    case 'SET_PRICE':
+      return {
+        ...state,
+        visibilityFilter: {
+          ...state.visibilityFilter,
+          rating: action.payload.rating,
+        },
+      };
+    case 'SET_WEIGHT':
+      return {
+        ...state,
+        visibilityFilter: {
+          ...state.visibilityFilter,
+          rating: action.payload.rating,
+        },
+      };
+    case 'SHOW_POWERMETER_INCLUDED':
+      return {
+        ...state,
+        visibilityFilter: {
+          ...state.visibilityFilter,
+          powermeter: action.powermeter,
+        },
+      };
+    case 'SET_SORT_PARAMS':
+      return {
+        ...state,
+        visibilityFilter: {
+          ...state.visibilityFilter,
+          rating: action.payload.rating,
+        },
       };
     default:
       return state;
   }
 };
 
+const rootReducer = combineReducers({
+  visibilityFilter: visibilityReducer,
+});
+
 function initStore(preloadedState = initialState) {
   return createStore(
-    reducer,
+    visibilityReducer,
     preloadedState,
-    composeWithDevTools(applyMiddleware())
+    composeWithDevTools(applyMiddleware(...middleware))
   );
 }
 
