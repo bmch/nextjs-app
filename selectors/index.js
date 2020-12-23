@@ -17,7 +17,7 @@ export const getVisibleBikeData = createSelector(
           (visibilityFilter.price == 'all' ||
             visibilityFilter.price == b.price) &&
           (visibilityFilter.rating == 'all' ||
-            visibilityFilter.rating == b.rating) &&
+            visibilityFilter.rating <= b.score) &&
           (visibilityFilter.powermeter == 'all' ||
             visibilityFilter.powermeter == b.includes_powermeter)
         );

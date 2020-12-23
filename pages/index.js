@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { getBikeData } from '../db/db';
 import { useSelector, useDispatch } from 'react-redux';
 import { getVisibleBikeData } from '../selectors';
+import { togglePowerMeter } from '../actions';
+import Pane from '../components/Pane';
 
 export const getStaticProps = async (context) => {
   const bikeData = await getBikeData();
@@ -12,7 +14,6 @@ export const getStaticProps = async (context) => {
         lastUpdate: Date.now(),
         bikeData,
         currentBike: null,
-        displayPreference: null,
         visibilityFilter: {
           sortParams: null,
           rating: 'all',
@@ -31,7 +32,16 @@ export default function Home(props) {
   console.log('this is props in home', props);
   const dispatch = useDispatch();
 
-  const bikeData = useSelector((state) => getVisibleBikeData(state));
+  const bikeData = useSelector((state) => {
+    if (state.visibilityFilter) {
+      console.log('running selector... ');
+      return getVisibleBikeData(state);
+    }
+    return state.bikeData;
+  });
+
+  console.log('bike data is ', bikeData);
+
   //const bikeData = useSelector((state) => state.bikeData);
 
   const updatedTime = useSelector((state) => state.lastUpdate);
@@ -40,20 +50,12 @@ export default function Home(props) {
     <div>
       <section className="filters">
         <div>{updatedTime}</div>
-
-        <button
-          onClick={() =>
-            dispatch({ type: 'SHOW_POWERMETER_INCLUDED', powermeter: 'all' })
-          }
-        >
+        <Pane />
+        <button onClick={() => dispatch(togglePowerMeter('all'))}>
           show all
         </button>
 
-        <button
-          onClick={() =>
-            dispatch({ type: 'SHOW_POWERMETER_INCLUDED', powermeter: true })
-          }
-        >
+        <button onClick={() => dispatch(togglePowerMeter(true))}>
           filter - only power meter included
         </button>
       </section>

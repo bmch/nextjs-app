@@ -2,97 +2,15 @@ import { useMemo } from 'react';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+import visibilityReducer from './reducers';
 
 let store;
 
-const initialState = {
-  lastUpdate: 0,
-  bikeData: {},
-  currentBike: null,
-  displayPreference: null,
-  visibilityFilter: {
-    sortParams: null,
-    rating: 'all',
-    brand: 'all',
-    weight: 'all',
-    score: 'all',
-    price: 'all',
-    powermeter: false,
-  },
-};
-
-const initialVisibilityState = {
-  visibilityFilter: {
-    sortParams: null,
-    rating: 'all',
-    brand: 'all',
-    weight: 'all',
-    score: 'all',
-    price: 'all',
-    powermeter: false,
-  },
-};
-
 const middleware = [thunk];
 
-const visibilityReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'SET_RATING':
-      return {
-        ...state,
-        visibilityFilter: {
-          ...state.visibilityFilter,
-          rating: action.payload.rating,
-        },
-      };
-    case 'SET_BRAND':
-      return {
-        ...state,
-        visibilityFilter: {
-          ...state.visibilityFilter,
-          rating: action.payload.rating,
-        },
-      };
-    case 'SET_PRICE':
-      return {
-        ...state,
-        visibilityFilter: {
-          ...state.visibilityFilter,
-          rating: action.payload.rating,
-        },
-      };
-    case 'SET_WEIGHT':
-      return {
-        ...state,
-        visibilityFilter: {
-          ...state.visibilityFilter,
-          rating: action.payload.rating,
-        },
-      };
-    case 'SHOW_POWERMETER_INCLUDED':
-      return {
-        ...state,
-        visibilityFilter: {
-          ...state.visibilityFilter,
-          powermeter: action.powermeter,
-        },
-      };
-    case 'SET_SORT_PARAMS':
-      return {
-        ...state,
-        visibilityFilter: {
-          ...state.visibilityFilter,
-          rating: action.payload.rating,
-        },
-      };
-    default:
-      return state;
-  }
-};
-
-const rootReducer = combineReducers({
-  visibilityFilter: visibilityReducer,
-});
+// const rootReducer = combineReducers({
+//   visibilityFilter: visibilityReducer,
+// });
 
 function initStore(preloadedState = initialState) {
   return createStore(
