@@ -11,6 +11,20 @@ const middleware = [thunk];
 // const rootReducer = combineReducers({
 //   visibilityFilter: visibilityReducer,
 // });
+const initialState = {
+  lastUpdate: 0,
+  bikeData: {},
+  currentBike: null,
+  visibilityFilter: {
+    sortParams: null,
+    rating: 'all',
+    brand: 'all',
+    weight: 'all',
+    score: 'all',
+    price: 'all',
+    powermeter: false,
+  },
+};
 
 function initStore(preloadedState = initialState) {
   return createStore(
