@@ -1,23 +1,24 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { onRatingChange } from '../../actions';
-import styles from './Rating.module.scss';
 
-export default () => {
+const Rating = () => {
   const vis = useSelector((state) => state.visibilityFilter);
   const dispatch = useDispatch();
   const ratings = [4, 4.1, 4.5, 4.8, 5];
+  // style={{ $rating: 2.9 }}
+  const starStyle = {
+    '--rating': 3.5,
+  };
 
   return (
     <>
       star rating below here
       <div
-        className="styles.Stars"
-        style={{ '$-rating': 2.9 }}
+        className="Stars"
+        style={starStyle}
         aria-label={'Rating of this product is 2.3 out of 5.'}
-      >
-        test
-      </div>
+      ></div>
       <select
         defaultValue={vis.rating}
         onChange={(e) => dispatch(onRatingChange(e.target.value))}
@@ -32,3 +33,5 @@ export default () => {
     </>
   );
 };
+
+export default Rating;

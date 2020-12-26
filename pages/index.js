@@ -66,7 +66,12 @@ export default function Home(props) {
             ({ id, name, price, score, image_url, model_variant }) => (
               <Link href={`/bikes/${name}`} key={id}>
                 <div className="cards__card">
-                  <img src={image_url} alt={name} />
+                  <img
+                    className="cards__card__img"
+                    src={image_url}
+                    alt={name}
+                  />
+
                   <div className="cards__card__details">
                     {model_variant}
                     <br />

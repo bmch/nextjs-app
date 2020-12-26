@@ -19,6 +19,7 @@ exports.seed = function (knex) {
         { id: 10, brand_name: 'Giant' },
         { id: 11, brand_name: 'BMC' },
         { id: 12, brand_name: 'Scott' },
+        { id: 13, brand_name: 'Ribble' },
       ]);
     });
 };
