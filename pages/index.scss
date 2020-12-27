@@ -1,16 +1,18 @@
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
-  grid-gap: 1rem;
+  grid-gap: 2rem;
   max-width: 1500px;
   margin: 2rem auto;
 
   &__card {
-    // border: 2px solid red;
-    padding: 1rem;
+    border: 2px solid red;
+    //padding: 1rem;
     cursor: pointer;
+    height: 400px;
 
     &__img {
+      //  height: 295px;
       // background-color: #f8f8f8;
       background-color: #eeeeee;
     }

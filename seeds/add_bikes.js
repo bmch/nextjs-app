@@ -6,7 +6,6 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('bikes').insert([
         {
-          id: 1,
           name: 'BMC-Timemachine-01-Road-One',
           price: 6999,
           launch_date: new Date().toISOString(),
@@ -23,7 +22,6 @@ exports.seed = function (knex) {
         },
 
         {
-          id: 2,
           name: 'BMC-Teammachine-SLR01-One-Ltd',
           price: 10449,
           launch_date: new Date().toISOString(),
@@ -40,7 +38,51 @@ exports.seed = function (knex) {
         },
 
         {
-          id: 3,
+          name: 'Ribble Endurance SL R Series Disc',
+          price: 7999,
+          launch_date: new Date().toISOString(),
+          score: 4,
+          brand_id: 13,
+          model_family: 'Endurance SL R Series Disc',
+          model_variant: 'Endurance SL R Series Disc SRAM Red eTap AXS HRD',
+          model_year: 2020,
+          brake_type: 'disc',
+          image_url: '/images/bicycles/Ribble-Endurance-SL-R-Series-Disc.png',
+          drive_train_type: '',
+          includes_powermeter: false,
+        },
+
+        {
+          name: 'Ribble Endurance SL R Series Disc',
+          price: 7999,
+          launch_date: new Date().toISOString(),
+          score: 4,
+          brand_id: 13,
+          model_family: 'Endurance SL R Series Disc',
+          model_variant: 'Endurance SL R Series Disc SRAM Red eTap AXS HRD',
+          model_year: 2020,
+          brake_type: 'disc',
+          image_url: '/images/bicycles/Ribble-Endurance-SL-R-Series-Disc.png',
+          drive_train_type: '',
+          includes_powermeter: false,
+        },
+
+        {
+          name: 'Ribble Endurance SL R Series Disc',
+          price: 7999,
+          launch_date: new Date().toISOString(),
+          score: 4,
+          brand_id: 13,
+          model_family: 'Endurance SL R Series Disc',
+          model_variant: 'Endurance SL R Series Disc SRAM Red eTap AXS HRD',
+          model_year: 2020,
+          brake_type: 'disc',
+          image_url: '/images/bicycles/Ribble-Endurance-SL-R-Series-Disc.png',
+          drive_train_type: '',
+          includes_powermeter: false,
+        },
+
+        {
           name: 'Cannondale_SystemSix_Hi-MOD_DuraAceDi2',
           price: 9500,
           launch_date: new Date().toISOString(),
@@ -57,23 +99,6 @@ exports.seed = function (knex) {
         },
 
         {
-          id: 4,
-          name: 'Ribble Endurance SL R Series Disc',
-          price: 7999,
-          launch_date: new Date().toISOString(),
-          score: 4,
-          brand_id: 13,
-          model_family: 'Endurance SL R Series Disc',
-          model_variant: 'Endurance SL R Series Disc SRAM Red eTap AXS HRD',
-          model_year: 2020,
-          brake_type: 'disc',
-          image_url: '/images/bicycles/Ribble-Endurance-SL-R-Series-Disc.png',
-          drive_train_type: '',
-          includes_powermeter: false,
-        },
-
-        {
-          id: 5,
           name: 'Specialized-S-Works-Tarmac-SL7-Dura-Ace-Di2',
           price: 11500,
           launch_date: new Date().toISOString(),
@@ -89,7 +114,6 @@ exports.seed = function (knex) {
           includes_powermeter: true,
         },
         {
-          id: 6,
           name: 'Canyon-Aeroad-CFR-Di2',
           price: 7699,
           launch_date: new Date().toISOString(),
@@ -105,7 +129,6 @@ exports.seed = function (knex) {
           includes_powermeter: true,
         },
         {
-          id: 7,
           name: 'Trek-Madone-SLR9-Disc',
           price: 11050,
           launch_date: new Date().toISOString(),
@@ -120,7 +143,6 @@ exports.seed = function (knex) {
           includes_powermeter: true,
         },
         {
-          id: 8,
           name: 'Cervélo-S5-Disc-Dura-Ace-Di2',
           price: 9699,
           launch_date: new Date().toISOString(),
@@ -135,7 +157,6 @@ exports.seed = function (knex) {
           includes_powermeter: false,
         },
         {
-          id: 9,
           name: 'Bianchi-Oltre-XR4',
           price: 7700,
           launch_date: new Date().toISOString(),
